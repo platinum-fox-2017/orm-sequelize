@@ -1,4 +1,5 @@
 const Table = require('cli-table')
+const chalk = require('chalk');
 var table = new Table({
     chars: {
         'top': '═', 'top-mid': '╤', 'top-left': '╔', 'top-right': '╗'
@@ -20,7 +21,13 @@ class Author {
 
     static printById(data) {
         console.log(`=== your result ===========`)
-        table.push([data.id, data.first_name, data.last_name, data.religion, data.gender, data.age])
+        table.push([
+            chalk.green(data.id),
+            chalk.blue(data.first_name),
+            chalk.green(data.last_name),
+            chalk.yellow(data.religion),
+            chalk.redBright(data.gender),
+            chalk.cyan(data.age)])
         console.log(table.toString());
         process.exit();
     }
@@ -28,7 +35,13 @@ class Author {
     static printAllAuthor(datas) {
 
         for (let index = 0; index < datas.length; index++) {
-            table.push([datas[index].dataValues.id, datas[index].dataValues.first_name, datas[index].dataValues.last_name, datas[index].dataValues.religion, datas[index].dataValues.gender, datas[index].dataValues.age])
+            table.push([
+                chalk.green(datas[index].dataValues.id),
+                chalk.blue(datas[index].dataValues.first_name),
+                chalk.green(datas[index].dataValues.last_name),
+                chalk.yellow(datas[index].dataValues.religion),
+                chalk.redBright(datas[index].dataValues.gender),
+                chalk.cyan(datas[index].dataValues.age)])
         }
         console.log(table.toString());
         process.exit();

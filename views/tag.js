@@ -1,4 +1,5 @@
 const Table = require('cli-table')
+const chalk = require('chalk')
 var table = new Table({
     chars: {
         'top': '═', 'top-mid': '╤', 'top-left': '╔', 'top-right': '╗'
@@ -19,14 +20,19 @@ class Tag {
     }
 
     static printById(data) {
-        table.push([data.id, data.name])
+        table.push([
+            chalk.green(data.id),
+            chalk.blue(data.name)
+        ])
         console.log(table.toString())
         process.exit()
     }
 
     static printAllTag(datas) {
         for (let index = 0; index < datas.length; index++) {
-            table.push([datas[index].dataValues.id, datas[index].dataValues.name])
+            table.push([
+                chalk.green(datas[index].dataValues.id),
+                chalk.blue(datas[index].dataValues.name)])
         }
         console.log(table.toString());
         process.exit()
