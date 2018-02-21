@@ -1,4 +1,5 @@
 const models = require('./models/')
+const view = require('./view.js')
 
 
 
@@ -50,12 +51,12 @@ class Controller{
                     id:option2[0]
                 },raw:true
             }).then(authorsData => {
-                console.log(authorsData)
+                view.viewAuthorOne(authorsData)
             })
         }
         else if(syntax == 'author' && option == 'read_all'){
             models.authors.findAll({raw:true}).then(authorsData => {
-                console.log(authorsData)
+                view.viewAuthor(authorsData)
             })
         }
         else if(syntax == 'author' && option == 'update'){
@@ -93,12 +94,12 @@ class Controller{
                     id:option2[0]
                 },raw:true
             }).then(tagsData => {
-                console.log(tagsData)
+                view.viewTagOne(tagsData)
             })
         }
         else if(syntax == 'tag' && option == 'read_all'){
             models.tags.findAll({raw:true}).then(tagsData => {
-                console.log(tagsData)
+                view.viewTag(tagsData)
             })
         }
         else if(syntax == 'tag' && option == 'update'){
@@ -135,12 +136,12 @@ class Controller{
                     id:option2[0]
                 },raw:true
             }).then(articlesData => {
-                console.log(articlesData)
+                view.viewArticleOne(articlesData)
             })
         }
         else if(syntax == 'article' && option == 'read_all'){
             models.articles.findAll({raw:true}).then(articlesData => {
-                console.log(articlesData)
+                view.viewArticle(articlesData)
             })
         }
         else if(syntax == 'article' && option == 'update'){
