@@ -1,5 +1,5 @@
 const models = require('../models')
-// const models = require('./view')
+const views = require('../view')
 class Controller{
   constructor(input2,input3,input4,input5){
     this.input2=input2
@@ -87,7 +87,8 @@ class Controller{
               id: this.input4
             }
           }).then(articlesData => {
-             console.log(articlesData)
+             views.printView(articlesData)
+              // console.log(articlesData)
           });
         }
         else if(input2==='article'){
