@@ -3,9 +3,7 @@ const Author = require('./controllers/author')
 const Tag = require('./controllers/tag')
 const Article = require('./controllers/article')
 
-if(process.argv[2] === 'help'){
-    Index.showHelp()
-}else if(process.argv[2] === 'author'){
+if(process.argv[2] === 'author'){
     if(process.argv[3] === 'add'){
         Author.add(process.argv[4])
     }else if(process.argv[3] === 'read_one'){
@@ -16,6 +14,8 @@ if(process.argv[2] === 'help'){
         Author.update(process.argv[4], process.argv[5])
     }else if(process.argv[3] === 'delete'){
         Author.delete(process.argv[4])
+    }else{
+        Index.showHelp()
     }
 }else if(process.argv[2] === 'tag'){
     if(process.argv[3] === 'add'){
@@ -28,6 +28,8 @@ if(process.argv[2] === 'help'){
         Tag.update(process.argv[4], process.argv[5])
     }else if(process.argv[3] === 'delete'){
         Tag.delete(process.argv[4])
+    }else{
+        Index.showHelp()
     }
 }else if(process.argv[2] === 'article'){
     if(process.argv[3] === 'add'){
@@ -40,5 +42,9 @@ if(process.argv[2] === 'help'){
         Article.update(process.argv[4], process.argv[5])
     }else if(process.argv[3] === 'delete'){
         Article.delete(process.argv[4])
+    }else{
+        Index.showHelp()
     }
+}else{
+    Index.showHelp()
 }

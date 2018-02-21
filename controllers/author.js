@@ -14,21 +14,28 @@ class Author{
         author.create(objAuthor).then(()=>{
             View.commentAdded()
             process.exit()
-        }).catch(err=>console.log(err))
+        }).catch(err=>{
+            console.log(err)
+            process.exit()
+        })
     }
     static read_one(idAuthor){
         author.findById(idAuthor).then(authorData=>{
             View.findById(authorData.dataValues)
             process.exit()
-        }).catch(err=>console.log(err))
+        }).catch(err=>{
+            console.log(err)
+            process.exit()
+        })
     }
     static read_all(){
         author.findAll().then(authorData=>{
-            authorData.map(data=>{
-                View.readAll(data.dataValues)
-            })
+                View.readAll(authorData)
             process.exit()
-        }).catch(err=>console.log(err))
+        }).catch(err=>{
+            console.log(err)
+            process.exit()
+        })
     }
     static update(data, idAuthor){
         let dataAuthor = data.split(',')
@@ -44,13 +51,19 @@ class Author{
                 View.commentUpdated(idAuthor)
                 process.exit()
             }).catch(err=>console.log(err))
-        }).catch(err=>console.log(err))
+        }).catch(err=>{
+            console.log(err)
+            process.exit()
+        })
     }
     static delete(idAuthor){
         author.destroy({where :{id : idAuthor}}).then(()=>{
             View.commentDeleted(idAuthor)
             process.exit()
-        }).catch(err=>console.log(err))
+        }).catch(err=>{
+            console.log(err)
+            process.exit()
+        })
     }
 }
 

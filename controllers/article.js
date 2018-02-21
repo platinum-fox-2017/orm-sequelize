@@ -13,21 +13,28 @@ class Article{
         article.create(objArticle).then(()=>{
             View.commentAdded()
             process.exit()
-        }).catch(err=>console.log(err))
+        }).catch(err=>{
+            console.log(err)
+            process.exit()
+        })
     }
     static read_one(idArticle){
         article.findById(idArticle).then(articleData=>{
             View.findById(articleData.dataValues)
             process.exit()
-        }).catch(err=>console.log(err))
+        }).catch(err=>{
+            console.log(err)
+            process.exit()
+        })
     }
     static read_all(){
         article.findAll().then(articleData=>{
-            articleData.map(data=>{
-                View.readAll(data.dataValues)
-            })
+                View.readAll(articleData)
             process.exit()
-        }).catch(err=>console.log(err))
+        }).catch(err=>{
+            console.log(err)
+            process.exit()
+        })
     }
     static update(data, idArticle){
         let dataArticle = data.split(',')
@@ -41,14 +48,23 @@ class Article{
             article.update(objArticle,{ where :{id:idArticle}}).then(()=>{
                 View.commentUpdated(idArticle)
                 process.exit()
-            }).catch(err=>console.log(err))
-        }).catch(err=>console.log(err))
+            }).catch(err=>{
+                console.log(err)
+                process.exit()
+            })
+        }).catch(err=>{
+            console.log(err)
+            process.exit()
+        })
     }
     static delete(idArticle){
         article.destroy({where :{id : idArticle}}).then(()=>{
             View.commentDeleted(idArticle)
             process.exit()
-        }).catch(err=>console.log(err))
+        }).catch(err=>{
+            console.log(err)
+            process.exit()
+        })
     }
 }
 

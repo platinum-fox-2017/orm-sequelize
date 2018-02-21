@@ -10,21 +10,28 @@ class Tag{
         tag.create(objTag).then(()=>{
             View.commentAdded()
             process.exit()
-        }).catch(err=>console.log(err))
+        }).catch(err=>{
+            console.log(err)
+            process.exit()
+        })
     }
     static read_one(idTag){
         tag.findById(idTag).then(tagData=>{
             View.findById(tagData.dataValues)
             process.exit()
-        }).catch(err=>console.log(err))
+        }).catch(err=>{
+            console.log(err)
+            process.exit()
+        })
     }
     static read_all(){
         tag.findAll().then(tagData=>{
-            tagData.map(data=>{
-                View.readAll(data.dataValues)
-            })
+            View.readAll(tagData)
             process.exit()
-        }).catch(err=>console.log(err))
+        }).catch(err=>{
+            console.log(err)
+            process.exit()
+        })
     }
     static update(data, idTag){
         let dataTag = data.split(',')
@@ -34,13 +41,19 @@ class Tag{
         tag.update(objTag,{ where :{id:idTag}}).then(()=>{
             View.commentUpdated(idTag)
             process.exit()
-        }).catch(err=>console.log(err))
+        }).catch(err=>{
+            console.log(err)
+            process.exit()
+        })
     }
     static delete(idTag){
         tag.destroy({where :{id : idTag}}).then(()=>{
             View.commentDeleted(idTag)
             process.exit()
-        }).catch(err=>console.log(err))
+        }).catch(err=>{
+            console.log(err)
+            process.exit()
+        })
     }
 }
 

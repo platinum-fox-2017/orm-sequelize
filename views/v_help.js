@@ -3,23 +3,23 @@ const chalk = require('chalk');
 
 class View{
     static showHelp(){
-        console.log(`==== documentation ===================================================
-author add -> add<space> "data yang ingin dimasukkan"
-author read_one -> read_one<space> "masukkan id author"
-author read_all -> read_all
-author update -> update<space> "masukkan data yang ingin diupdate dan idnya"
-author delete -> delete<space> "masukkan id author"
-tag add -> add<space> "data yang ingin dimasukkan"
-tag read_one -> read_one<space> "masukkan id tag"
-tag read_all -> read_all
-tag update -> update<space> "masukkan data yang ingin diupdate dan idnya"
-tag delete -> delete<space> "masukkan id author"
-article add -> add<space> "data yang ingin dimasukkan"
-article read_one -> read_one<space> "masukkan id article"
-article read_all -> read_all
-article update -> update<space> "masukkan data yang ingin diupdate dan idnya"
-article delete -> delete<space> "masukkan id author"
-=======================================================================`)
+        console.log(chalk.red.bold('==== documentation ==================================================='))
+        console.log(chalk.blue('author add -> add<space> "data yang ingin dimasukkan"'))
+        console.log(chalk.blue('author read_one -> read_one<space> "masukkan id author"'))
+        console.log(chalk.blue('author read_all -> read_all'))
+        console.log(chalk.blue('author update -> update<space> "masukkan data yang ingin diupdate dan idnya"'))
+        console.log(chalk.blue('author delete -> delete<space> "masukkan id author"'))
+        console.log(chalk.green('tag add -> add<space> "data yang ingin dimasukkan"'))
+        console.log(chalk.green('tag read_one -> read_one<space> "masukkan id tag"'))
+        console.log(chalk.green('tag read_all -> read_all'))
+        console.log(chalk.green('tag update -> update<space> "masukkan data yang ingin diupdate dan idnya"'))
+        console.log(chalk.green('tag delete -> delete<space> "masukkan id tag"'))
+        console.log(chalk.yellow('article add -> add<space> "data yang ingin dimasukkan"'))
+        console.log(chalk.yellow('article read_one -> read_one<space> "masukkan id article"'))
+        console.log(chalk.yellow('article read_all -> read_all'))
+        console.log(chalk.yellow('article update -> update<space> "masukkan data yang ingin diupdate dan idnya"'))
+        console.log(chalk.yellow('article delete -> delete<space> "masukkan id article"'))
+        console.log(chalk.red.bold('======================================================================='))
     // let table = new Table({
     //     head: ['NO', 'Command']
     // , colWidths: [5, 80]
