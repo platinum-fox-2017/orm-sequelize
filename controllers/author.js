@@ -46,16 +46,16 @@ class Controller_author{
       author.findById(data[1]).then(datanya=>{
         // console.log(datanya.dataValues)
         let objData ={
-            first_name : inputEdit[0] === '' ? datanya.dataValues.first_name:inputEdit[0],
-            last_name : inputEdit[1]  === '' ? datanya.dataValues.last_name:inputEdit[1],
-            religion : inputEdit[2]  === '' ? datanya.dataValues.religion:inputEdit[2],
-            gender : inputEdit[3]  === '' ? datanya.dataValues.gender:inputEdit[3],
-            age : Number(inputEdit[4])  === '' ? datanya.dataValues.age:inputEdit[4]
-          }
-          author.update(objData,{where:{id:data[1]}}).then(()=>{
-            View_author.showUpdate(data[1])
-            process.exit()
-          })
+          first_name : inputEdit[0] === '' ? datanya.dataValues.first_name:inputEdit[0],
+          last_name : inputEdit[1]  === '' ? datanya.dataValues.last_name:inputEdit[1],
+          religion : inputEdit[2]  === '' ? datanya.dataValues.religion:inputEdit[2],
+          gender : inputEdit[3]  === '' ? datanya.dataValues.gender:inputEdit[3],
+          age : Number(inputEdit[4])  === '' ? datanya.dataValues.age:inputEdit[4]
+        }
+        author.update(objData,{where:{id:data[1]}}).then(()=>{
+          View_author.showUpdate(data[1])
+          process.exit()
+        })
       })
     }
     else if(input === 'delete'){

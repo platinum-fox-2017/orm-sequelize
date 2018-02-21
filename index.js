@@ -5,7 +5,7 @@ const View_help = require('./views/index')
 
 let tabel = process.argv[2]
 let input = process.argv[3]
-let data = process.argv.splice(4)//.join(' ').split(' ')
+let data = process.argv.splice(4)
 // console.log(data[0].split(':')[0])
 
 

@@ -33,11 +33,11 @@ class View_tag{
     let table = new Table({
       head: ['ID', 'Name']
     , colWidths: [10, 30]
-  });
+    });
     table.push(
       [chalk.blue(dataTag.id), chalk.green(dataTag.name)]
     );
-  console.log(chalk.bgHex('#ffccbc')(table.toString()));
+    console.log(chalk.bgHex('#ffccbc')(table.toString()));
   }
   static showUpdate(idUpdate){
     console.log(chalk.yellowBright(`Data with id : ${idUpdate} is successfully updated`))

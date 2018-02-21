@@ -36,13 +36,13 @@ class Controller_tag{
     }
     else if(input === 'update'){
       let inputEdit = data[0].split(',')
-        let objData ={
-            name : inputEdit[0]
-          }
-          tag.update(objData,{where:{id:data[1]}}).then(()=>{
-            View_tag.showUpdate(data[1])
-            process.exit()
-          })
+      let objData ={
+          name : inputEdit[0]
+      }
+      tag.update(objData,{where:{id:data[1]}}).then(()=>{
+        View_tag.showUpdate(data[1])
+        process.exit()
+      })
     
     }
     else if(input === 'delete'){
