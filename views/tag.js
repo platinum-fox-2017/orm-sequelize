@@ -1,6 +1,6 @@
-const Controller_author = require ('../controllers/author')
+const Controller_tag = require ('../controllers/tag')
 
-class View_author{
+class View_tag{
   constructor(){
 
   }
@@ -11,8 +11,8 @@ class View_author{
     console.log('Success added new data with detail:')
     console.log(objInput)
   }
-  static showOne(dataAuthor){
-    console.log(dataAuthor)
+  static showOne(dataTag){
+    console.log(dataTag)
   }
   static showUpdate(idUpdate){
     console.log(`Data with id : ${idUpdate} is successfully updated`)
@@ -23,4 +23,4 @@ class View_author{
   }
 }
 
-module.exports = View_author
+module.exports = View_tag
