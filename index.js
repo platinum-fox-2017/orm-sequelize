@@ -1,9 +1,7 @@
-// const model = require('./model')
 const authorController = require('./controller/authorController.js')
 const tagController = require('./controller/tagController.js')
 const articleController = require('./controller/articleController.js')
 const def = require('./view/default.js')
-// const view = require('./view')
 
 const argv = process.argv
 
