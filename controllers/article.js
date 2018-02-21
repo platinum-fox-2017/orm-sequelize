@@ -20,14 +20,14 @@ class Controller_article{
       }) 
     }
     else if(input === 'add'){
-      // console.log(data[0].split(','))
+      console.log(data[0].split(','))
       // console.log(data[1])
       let textInput = data[0].split(',')
       let objData ={
         title : textInput[0],
         body : textInput[1],
-        id_author : Number(data[1]),
-        id_tag : Number(data[2])
+        id_author : Number(textInput[2]),
+        id_tag : Number(textInput[3])
       }
       // console.log(objData)
       article.create(objData).then(function(){
