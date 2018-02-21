@@ -1,27 +1,26 @@
 const Table = require('cli-table');
-
-class View {
+class ViewArticle {
   constructor() {
 
   }
   static showAll(data){
     const table = new Table({
-    head: ['ID', 'First Name', 'Last Name', 'Religion', 'Gender', 'Age'],
-    colWidths: [5, 20, 20, 15, 10, 10]
+    head: ['ID', 'Title', 'Body', 'ID Author', 'ID Tag'],
+    colWidths: [5, 30, 50, 10, 10]
     })
     for(let i=0; i<data.length; i++){
-      table.push([data[i].id, data[i].first_name, data[i].last_name, data[i].religion, data[i].gender, data[i].age])
+      table.push([data[i].id, data[i].title, data[i].body, data[i].id_author, data[i].id_tag])
     }
     console.log(table.toString());
   }
   static addData(data){
     console.log('Data berikut berhasil ditambahkan')
-    View.showAll([data])
+    ViewArticle.showAll([data])
   }
   static updateData(data){
     const table = new Table({
-    head: ['ID', 'First Name', 'Last Name', 'Religion', 'Gender', 'Age'],
-    colWidths: [5, 20, 20, 15, 10, 10]
+    head: ['ID', 'Title', 'Body', 'ID Author', 'ID Tag'],
+    colWidths: [5, 30, 50, 10, 10]
     })
     console.log('Data berikut berhasil diubah')
     table.push(data)
@@ -32,4 +31,4 @@ class View {
   }
 }
 
-module.exports = View;
+module.exports = ViewArticle;
