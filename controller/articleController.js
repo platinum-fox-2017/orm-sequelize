@@ -6,13 +6,13 @@ class ArticleController {
     models.article.create({title:input3[0],body:input3[1],id_author:input3[2],id_tag:input3[3]})
     .then((dataArticle) => {
       models.article.findAll({raw:true}).then((dataArticle) => {
-        Views.viewArticle(dataArticle[dataArticle.length-1]);
+        Views.viewArticle(dataArticle[dataArticle.length-1],input3);
       });
     })
   }
   static readOne(input3){
     models.article.findAll({raw:true}).then((dataArticle) => {
-      Views.viewArticle(dataArticle[input3-1]);
+      Views.viewArticle(dataArticle[input3-1],input3);
     });
   }
   static readAll(){
@@ -25,11 +25,13 @@ class ArticleController {
       title:input3[0],body:input3[1],id_author:input3[2],id_tag:input3[3]},
       {where:{id:
         input3[0]}})
+    Views.viewArticle('update',input3);
   }
   static delete(input3){
     models.article.destroy({
       where:{id:input3}
     });
+    Views.viewArticle('delete',input3);
   }
 }
 
