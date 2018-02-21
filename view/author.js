@@ -29,7 +29,7 @@ class Author {
     for (var i = 0; i < data.length; i++) {
       table.push([data[i].id, data[i].first_name, data[i].last_name, data[i].religion, data[i].gender, data[i].age])
     }
-    console.log(table.toString());
+    console.log(chalk.bgGreen(table.toString()));
   }
 
   static updateData(data) {
