@@ -1,0 +1,9 @@
+sequelize model:generate --name User --attributes firstName:string,lastName:string,email:string
+
+sequelize model:generate --name author --attributes first_name:string,last_name:string,religion:string,gender:string,age:integer
+sequelize model:generate --name tag --attributes name:string
+sequelize model:generate --name article --attributes title:string,body:text,id_author:integer,id_tag:integer
+
+
+sequelize db:migrations
+
