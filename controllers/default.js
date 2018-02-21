@@ -20,7 +20,7 @@ article readAll -> readAll
 article update -> update<space> "masukkan data yang ingin di update dan idnya"
 article delete -> delete<space> "masukkan id article"
 ================================================`;
-        view.dislay(data);
+        view.dislayStatus(data);
     }
 }
 module.exports = Default;

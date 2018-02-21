@@ -11,16 +11,16 @@ class ArticleController{
                     id_author: option[3],
                     id_tag: option[4]
                     })
-                    .then(article => {view.dislay(article.dataValues);})
-                    .catch(err => {view.dislay(err);}); break;
+                    .then(article => {view.dislayTableArticle([article.dataValues]);})
+                    .catch(err => {view.dislayStatus(err);}); break;
             case 'readOne' :
                 model.articles.findOne({raw:true, where: {id: option[1]} })
-                    .then(article => {view.dislay(article);})
-                    .catch(err => {view.dislay(err);}); break;
+                    .then(article => {view.dislayTableArticle([article]);})
+                    .catch(err => {view.dislayStatus(err);}); break;
             case 'readAll' : 
                 model.articles.findAll({raw:true})
-                    .then(article => {view.dislay(article);})
-                    .catch(err => {view.dislay(err);}); break;
+                    .then(article => {view.dislayTableArticle(article);})
+                    .catch(err => {view.dislayStatus(err);}); break;
             case 'update' : 
                 let objToWrite = {};
                 let valueArr = option[2].split(',');
@@ -34,12 +34,12 @@ class ArticleController{
                     }
                 }
                 model.articles.update(objToWrite,{where: {id:option[1]}})
-                    .then(article => {view.dislay('Data updated');})
-                    .catch(err => {view.dislay(err);}); break;
+                    .then(article => {view.dislayStatus('Data updated');})
+                    .catch(err => {view.dislayStatus(err);}); break;
             case 'delete' : 
                 model.articles.destroy({where: {id: option[1]}})
-                    .then(article => {view.dislay('Article deleted');})
-                    .catch(err => {view.dislay(err);}); break;
+                    .then(article => {view.dislayStatus('Article deleted');})
+                    .catch(err => {view.dislayStatus(err);}); break;
         }
     }
 }

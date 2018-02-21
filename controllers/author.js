@@ -12,16 +12,16 @@ class AuthorController{
                     gender: option[4],
                     age: option[5]
                     })
-                    .then(author => {view.dislay(author.dataValues);})
-                    .catch(err => {view.dislay(err);}); break;
+                    .then(author => {view.dislayTableAuthor([author.dataValues]);})
+                    .catch(err => {view.dislayStatus(err);}); break;
             case 'readOne' :
                 model.authors.findOne({raw:true, where: {id: option[1]} })
-                    .then(author => {view.dislay(author);})
-                    .catch(err => {view.dislay(err);}); break;
+                    .then(author => {view.dislayTableAuthor([author]);})
+                    .catch(err => {view.dislayStatus(err);}); break;
             case 'readAll' : 
                 model.authors.findAll({raw:true})
-                    .then(authors => {view.dislay(authors);})
-                    .catch(err => {view.dislay(err);}); break;
+                    .then(authors => {view.dislayTableAuthor(authors);})
+                    .catch(err => {view.dislayStatus(err);}); break;
             case 'update' : 
                 let objToWrite = {};
                 let valueArr = option[2].split(',');
@@ -36,12 +36,12 @@ class AuthorController{
                     }
                 }
                 model.authors.update(objToWrite,{where: {id:option[1]}})
-                    .then(authors => {view.dislay('Data updated');})
-                    .catch(err => {view.dislay(err);}); break;
+                    .then(authors => {view.dislayTableAuthor('Data updated');})
+                    .catch(err => {view.dislayStatus(err);}); break;
             case 'delete' : 
                 model.authors.destroy({where: {id: option[1]}})
-                    .then(authors => {view.dislay('Author deleted');})
-                    .catch(err => {view.dislay(err);}); break;
+                    .then(authors => {view.dislayTableAuthor('Author deleted');})
+                    .catch(err => {view.dislayStatus(err);}); break;
         }
     }
 }

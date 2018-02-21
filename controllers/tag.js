@@ -8,16 +8,16 @@ class TagController{
                 model.tags.create({
                     name: option[1]
                     })
-                    .then(tag => {view.dislay(tag.dataValues);})
-                    .catch(err => {view.dislay(err);}); break;
+                    .then(tag => {view.dislayTableTag([tag.dataValues]);})
+                    .catch(err => {view.dislayStatus(err);}); break;
             case 'readOne' :
                 model.tags.findOne({raw:true, where: {id: option[1]} })
-                    .then(tag => {view.dislay(tag);})
-                    .catch(err => {view.dislay(err);}); break;
+                    .then(tag => {view.dislayTableTag([tag]);})
+                    .catch(err => {view.dislayStatus(err);}); break;
             case 'readAll' : 
                 model.tags.findAll({raw:true})
-                    .then(tag => {view.dislay(tag);})
-                    .catch(err => {view.dislay(err);}); break;
+                    .then(tag => {view.dislayTableTag(tag);})
+                    .catch(err => {view.dislayStatus(err);}); break;
             case 'update' : 
                 let objToWrite = {};
                 let valueArr = option[2].split(',');
@@ -31,12 +31,12 @@ class TagController{
                     }
                 }
                 model.tags.update(objToWrite,{where: {id:option[1]}})
-                    .then(tag => {view.dislay('Data updated');})
-                    .catch(err => {view.dislay(err);}); break;
+                    .then(tag => {view.dislayTableTag('Data updated');})
+                    .catch(err => {view.dislayStatus(err);}); break;
             case 'delete' : 
                 model.tags.destroy({where: {id: option[1]}})
-                    .then(tag => {view.dislay(`Tag ${option[1]} deleted`);})
-                    .catch(err => {view.dislay(err);}); break;
+                    .then(tag => {view.dislayTableTag(`Tag ${option[1]} deleted`);})
+                    .catch(err => {view.dislayStatus(err);}); break;
         }
     }
 }
