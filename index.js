@@ -1,6 +1,7 @@
 const Author = require('./controller/author.js')
 const Tag = require('./controller/tags.js')
 const Article = require('./controller/article.js')
+const View = require('./views/views.js')
 
 class Index{
     constructor(){}
@@ -64,14 +65,15 @@ let argv = process.argv.slice(2,process.argv.length)
 let command = argv[0]
 let data = argv.slice(1,process.length)
 
-switch(command) {
-    case 'author':
-        Index.author(data)
-        break;
-    case 'tags':
-        Index.tags(data)
-        break;
-    case 'article':
-        Index.article(data)
-        break;
+if(command === 'author'){
+  Index.author(data)
+  process.exit()
+} else if(command === 'tags'){
+  Index.tags(data)
+  process.exit()
+} else if(command === 'article'){
+  Index.article(data)
+  process.exit()
+} else {
+  View.showHelp()
 }

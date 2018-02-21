@@ -7,24 +7,22 @@ class View{
   }
 
   static showHelp(){
+    var z = new Table({
+      head : ['HEEEEEEEEEEELLLLLLLLLLLLLLLLLLLLPPPPPPPPPPPPPPPP']
+    });
+
     var t = new Table({
-      head : ['No.','Function List','Usage' ]
+      head : ['No.','Function List','Author','Article','Tags']
     });
 
     t.push(
-      [Chalk.blue("1."),Chalk.red("node todo.js"),Chalk.green("help")],
-      ['2.','node todo.js list','showing all of your task'],
-      ['3.','node todo.js add(task content)','add task'],
-      ['4.','node todo.js findByID(id)','show your searched task by id'],
-      ['5.','node todo.js delete(task_id)','delete your task by id'],
-      ['6.','node todo.js complete(task_id)','complete your task by id'],
-      ['7.','node todo.js uncomplete(task_id)','uncomplete your task by id'],
-      ['8.','node todo.js list:sortAsc','sort ascending'],
-      ['9.','node todo.js list:sortDesc','sort descending'],
-      ['10.','node todo.js showComplete','show completed task'],
-      ['11.','node todo.js showUncomplete','show uncomplete task']
-    )
+      ['1.','showAll','show all Author','show all Article','show all Tags'],
+      ['2.','showOne(id)','show one Author by Id','show one Article by Id','show one Tags by Id'],
+      ['3.','add','add Author(firstname,lastname,religion,gender,age)','add Article(text,body,idAuthor,idTags)','add Tags(name)'],
+      ['4.','edit','edit Author(firstname,lastname,religion,gender,age)','edit Article(text,body,idAuthor,idTags)','edit Tags(name)'],
+      ['5.','delete','delete Author','delete Article','delete Tags'])
 
+    console.log("" + z)  
     console.log("" + t);
   }
 
