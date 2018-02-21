@@ -1,6 +1,27 @@
 "use strict"
+const Table = require('cli-table');
 
 class View {
+    static view(data){
+        console.log(data);
+    }
+    static viewAuthor(data){
+        console.log(data)
+        var table = new Table({
+            head: ['ID', 'First Name', 'Last Name', 'Religion']
+          , colWidths: [10, 10]
+        });
+        console.log(table.toString());
+    }
+    static addSuccess(){
+        console.log(`Data berhasil dimasukan ke dalam database`)
+    }
+    static deleteSuccess(){
+        console.log(`Data berhasil dihapus dari dalam database`)
+    }
+    static updateSuccess(){
+        console.log(`Database telah berhasil di update dengan data baru`)
+    }
     static help() {
         console.log(`
 === documentation ==========================

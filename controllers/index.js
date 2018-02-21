@@ -1,6 +1,9 @@
 "use strict"
-const model = require('../models')
-const View = require('../views')
+const model = require('../models');
+const View = require('../views');
+const ViewAuthor = require('../views/author.js');
+const ViewArticle = require('../views/article.js');
+const ViewTag = require('../views/tag.js');
 
 class Controller {
     static manageCommand(command, option) {
@@ -8,27 +11,25 @@ class Controller {
             if(option[0] == 'add') {
                 model.author.create({first_name:option[1],last_name:option[2],religion:option[3],gender:option[4],age:option[5]})
                 .then(task => {
-
+                    View.addSuccess();
                 })
             }
             else if(option[0] == 'read_all') {
                 model.author.findAll({raw:true})
                 .then(data => {
-                    console.log(data);               
+                    ViewAuthor.view(data);            
                 })
             }
             else if(option[0] == 'read_one') {
                 model.author.findOne({ raw:true, where: {id: option[1]} })
                 .then(data => {
-                    console.log(data);              
+                    ViewAuthor.view([data]);         
                 })
             }
             else if(option[0] == 'update') {
                 let updateValues = Controller.updateSplitterFormat(option[2])
                 model.author.findOne({ raw:true, where: {id: option[1]} })
                 .then(data => {
-                    console.log(data);
-                    console.log(updateValues)
                     for(let i in updateValues) {
                         if(updateValues[i][0] == 'first_name') data.first_name = updateValues[i][1];
                         else if(updateValues[i][0] == 'last_name') data.last_name = updateValues[i][1];
@@ -40,12 +41,12 @@ class Controller {
                 })
                 .then(function(data){
                     model.author.update(data, { where: { id: option[1] } }).then((result) => {
-                        console.log(data);
+                        View.view(data);
                     });
                 })
             }
             else if(option[0] == 'delete') {
-                model.author.destroy({where: {id: option[1]} })
+                model.author.destroy({where: {id: option[1]} }).then(()=>{View.deleteSuccess();})
             }
             else View.help();
         }
@@ -53,26 +54,25 @@ class Controller {
             if(option[0] == 'add') {
                 model.tag.create({name:option[1]})
                 .then(data => {
+                    View.addSuccess();
                 })
             }
             else if(option[0] == 'read_all') {
                 model.tag.findAll({raw:true})
                 .then(data => {
-                    console.log(data);               
+                    ViewTag.view(data);               
                 })
             }
             else if(option[0] == 'read_one') {
                 model.tag.findOne({ raw:true, where: {id: option[1]} })
                 .then(data => {
-                    console.log(data);              
+                    ViewTag.view([data]);              
                 })
             }
             else if(option[0] == 'update') {
                 let updateValues = Controller.updateSplitterFormat(option[2])
                 model.tag.findOne({ raw:true, where: {id: option[1]} })
                 .then(data => {
-                    console.log(data);
-                    console.log(updateValues)
                     for(let i in updateValues) {
                         if(updateValues[i][0] == 'name') data.name = updateValues[i][1];
                     }
@@ -80,12 +80,12 @@ class Controller {
                 })
                 .then(function(data){
                     model.tag.update(data, { where: { id: option[1] } }).then((result) => {
-                        console.log(data);
+                        View.updateSuccess();
                     });
                 })
             }
             else if(option[0] == 'delete') {
-                model.tag.destroy({where: {id: option[1]} })
+                model.tag.destroy({where: {id: option[1]} }).then(()=>{View.deleteSuccess();})
             }
             else View.help();
         }
@@ -93,18 +93,19 @@ class Controller {
             if(option[0] == 'add') {
                 model.article.create({title:option[1],body:option[2],id_author:option[3],id_tag:option[4]})
                 .then(data => {
+                    View.addSuccess();
                 })
             }
             else if(option[0] == 'read_all') {
                 model.article.findAll({raw:true})
-                .then(data => {      
-                    console.log(data);       
+                .then(data => {
+                    ViewArticle.view(data);      
                 })
             }
             else if(option[0] == 'read_one') {
                 model.article.findOne({ raw:true, where: {id: option[1]} })
                 .then(data => {
-                    console.log(data);              
+                    ViewArticle.view([data]);          
                 })
             }
             else if(option[0] == 'update') {
@@ -121,15 +122,16 @@ class Controller {
                 })
                 .then(function(data){
                     model.article.update(data, { where: { id: option[1] } }).then((result) => {
+                        View.updateSuccess();
                     });
                 })
             }
             else if(option[0] == 'delete') {
-                model.article.destroy({where: {id: option[1]} })
+                model.article.destroy({where: {id: option[1]} }).then(()=>{View.deleteSuccess();})
             }
             else View.help();
         }
-        else if(command == 'help') {
+        else {
             View.help()
         }
         console.log(`==========================================================`)
