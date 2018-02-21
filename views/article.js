@@ -17,9 +17,13 @@ class ArticleView {
             });
             let tempArr = new Array();
             for (let i in data) {
-                tempArr.push(data[i]);
+                if(data[i]==null)
+                    tempArr.push("null")
+                else
+                    tempArr.push(data[i]);
             }
             table.push(tempArr)
+
         }
         else{
             for (let i in data[0]) {
@@ -33,13 +37,17 @@ class ArticleView {
             for (let j = 0; j < data.length; j++) {
                 let tempArr = new Array();
                 for (let i in data[j]) {
-                    tempArr.push(data[j][i]);
+                    if(data[j][i] ==null)
+                        tempArr.push("null")
+                    else
+                        tempArr.push(data[j][i]);
                 }
                 table.push(tempArr)
             }
-        }
 
+        }
         console.log(table.toString());
+        
     }
 }
 

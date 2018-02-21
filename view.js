@@ -26,15 +26,28 @@ class View {
     }
 
     static author(data){
-        Author.print_table(data);
+        if(typeof data != 'string')
+            Author.print_table(data);
+        else
+            Author.print_notification(data);
     }
 
     static article(data){
-        Article.print_table(data);
+        if(typeof data != 'string')
+            Article.print_table(data);
+        else
+            Article.print_notification(data);
     }
 
     static tag(data){
-        Tag.print_table(data);
+        if(typeof data != 'string')
+            Tag.print_table(data);
+        else
+            Tag.print_notification(data);
+    }
+
+    static error(err){
+        console.log(`[Error] ${err}`);
     }
 }
 

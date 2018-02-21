@@ -14,13 +14,34 @@ class Controller{
                 View.help();
                 break;
             case 'author':
-                Author.handle(command, options,View.author);
+                Author.handle(command, options)
+                    .then((showValue) => {
+                        View.author(showValue);
+                    })
+                    .catch(err => {
+                        View.error(err)
+                    });
                 break;
             case 'tag':
-                Tag.handle(command, options,View.tag);
+                Tag.handle(command, options)
+                    .then((showValue) => {
+                        View.tag(showValue);
+                    })
+                    .catch(err => {
+                        View.error(err)
+                    });
                 break;
             case 'article':
-                Article.handle(command, options,View.article);
+                Article.handle(command, options)
+                    .then((showValue) => {
+                        View.article(showValue);
+                    })
+                    .catch(err => {
+                        View.error(err)
+                    });
+                break;
+            default:
+                View.help();
                 break;
         }
     }
