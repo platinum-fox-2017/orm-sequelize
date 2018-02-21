@@ -1,6 +1,7 @@
 const Author = require('./controllers/cont_author.js')
 const Tag = require('./controllers/cont_tag.js')
 const Article = require('./controllers/cont_article.js')
+const View = require('./views');
 
 const category = process.argv[2]
 const task = process.argv[3]
@@ -56,4 +57,7 @@ else if(category === 'article'){
   else if(task === 'delete'){
     Article.delete(input)
   }
+}
+else {
+  View.showHelp()
 }
