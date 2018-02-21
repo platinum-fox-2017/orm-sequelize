@@ -1,0 +1,11 @@
+// add || author first_name last_name religion gender age
+// add || article title body id_author id_tag
+// add || tag name
+
+
+// node index.js
+// add author first_name last_name religion gender age
+// read_one author id
+// read_all
+// update author id first_name last_name religion gender age
+// delete author id
