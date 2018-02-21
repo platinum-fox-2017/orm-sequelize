@@ -1,5 +1,11 @@
 const sequelize = require('sequelize')
 const {author} = require('./models')
+const Table = require('cli-table');
+const chalk = require('chalk');
+
+const table = new Table({
+    head: ['First Name', 'Last Name', 'Religion', 'Gender', 'Age']
+});
 
 class Controller{
     constructor(){}
@@ -14,7 +20,22 @@ class Controller{
         }
 
         author.create(obj).then(hasil=>{
-            console.log(hasil.dataValues)
+            let array = []
+            Object.keys(hasil.dataValues).forEach((key,index)=>{
+                if(key !== 'id' && key !== 'createdAt' && key !== 'updatedAt'){
+                    if(index % 2 === 0){
+                        array.push(chalk.blue(hasil.dataValues[key]))   
+                    }else if(index % 3 === 0){
+                        array.push(chalk.magenta(hasil.dataValues[key]))  
+                    }else{
+                        array.push(chalk.cyanBright(hasil.dataValues[key]))  
+                    }
+                    
+                }  
+            })
+            table.push(array)
+            console.log(chalk.blue(table.toString()))
+            process.exit()
             process.exit()
         })
     }
@@ -23,7 +44,20 @@ class Controller{
         author.findOne({
             where:{first_name: name[0]}
         }).then(result=>{
-            console.log(result.dataValues)
+            let array = []
+            Object.keys(result.dataValues).forEach((key,index)=>{
+                if(key !== 'id' && key !== 'createdAt' && key !== 'updatedAt'){
+                    if(index % 2 === 0){
+                        array.push(chalk.yellowBright(result.dataValues[key]))   
+                    }else if(index % 3 === 0){
+                        array.push(chalk.magenta(result.dataValues[key]))  
+                    }else{
+                        array.push(chalk.cyanBright(result.dataValues[key]))  
+                    }
+                }  
+            })
+            table.push(array)
+            console.log(table.toString())
             process.exit()
         })
     }
@@ -31,9 +65,22 @@ class Controller{
     static read_all(){
         author.findAll().then(data=>{
             const read = data.map(each=>{
-                return each.dataValues
+                let array = []
+                Object.keys(each.dataValues).forEach((key,index)=>{
+                    if(key !== 'id' && key !== 'createdAt' && key !== 'updatedAt'){
+                        if(index % 2 === 0){
+                            array.push(chalk.yellowBright(each.dataValues[key]))   
+                        }else if(index % 3 === 0){
+                            array.push(chalk.magenta(each.dataValues[key]))  
+                        }else{
+                            array.push(chalk.cyanBright(each.dataValues[key]))  
+                        }
+                    }
+                })
+                table.push(array)
+                return
             })
-            console.log(read)
+            console.log(table.toString())
             process.exit()
         })
     }
@@ -65,7 +112,21 @@ class Controller{
                 }
             }).then(result=>{
                 Controller.findById(Number(id),(data)=>{
-                    console.log(data)
+                    let array = []
+                    Object.keys(data).forEach((key,index)=>{
+                        if(key !== 'id' && key !== 'createdAt' && key !== 'updatedAt'){
+                            if(index % 2 === 0){
+                                array.push(chalk.magentaBright(data[key]))   
+                            }else if(index % 3 === 0){
+                                array.push(chalk.greenBright(data[key]))   
+                            }else {
+                                array.push(chalk.cyan(data[key]))   
+                            }
+                            
+                        }
+                    })
+                    table.push(array)
+                    console.log(table.toString())
                     process.exit()
                 })
             })

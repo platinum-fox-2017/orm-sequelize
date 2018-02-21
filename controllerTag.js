@@ -1,5 +1,6 @@
 const sequelize = require('sequelize')
 const {tag} = require('./models')
+const Table = require('cli-table');
 
 class Controller{
     constructor(){}
