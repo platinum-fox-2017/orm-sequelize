@@ -2,6 +2,8 @@ const View = require('../views/index');
 const AuthorController = require('./author');
 const TagController = require('./tag');
 const ArticleController = require('./article');
+var Table = require('cli-table');
+
 
 class Controller {
   static manageCommand(command,options){
