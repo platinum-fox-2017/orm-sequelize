@@ -1,10 +1,10 @@
 // const sequelize = require('./sequelize')
-const {author,tag, article} = require('../models')
-class Author {
+const {author, tag, article} = require('../models')
+class Article {
   static doSomething(command, user) {
     if (command === 'read_all') {
-      author.findAll().then(authors => {
-        authors.forEach(data => {
+      article.findAll().then(articles => {
+        articles.forEach(data => {
           console.log(data.dataValues);
         })
         process.exit()
@@ -13,15 +13,14 @@ class Author {
     else if (command === 'add') {
       for (var i = 0; i < user.length; i++) {
         var obj = {
-          first_name: user[0],
-          last_name: user[1],
-          religion: user[2],
-          gender: user[3],
-          age: user[4]
+          title: user[0],
+          body: user[1],
+          id_author: user[2],
+          id_tag: user[3]
          }
       }
       console.log(obj);
-      author.create(obj).then(function () {
+      article.create(obj).then(function () {
         console.log('data masuk');
         process.exit()
       })
@@ -30,8 +29,8 @@ class Author {
     else if (command === 'read_one') {
       let num = user.join('')
       console.log(num)
-      author.findById(num).then(authors => {
-        console.log(authors.dataValues);
+      article.findById(num).then(articles => {
+        console.log(articles.dataValues);
         process.exit()
       })
     }
@@ -46,20 +45,19 @@ class Author {
         obj[split[0]] = split[1]
       }
       // console.log(id_user);
-      author.findById(id_user).then(authors => {
-        author.update({
-          first_name: obj.first_name || authors.dataValues.first_name,
-          last_name: obj.last_name || authors.dataValues.last_name,
-          religion: obj.religion || authors.dataValues.religion,
-          gender: obj.gender || authors.dataValues.gender,
-          age: obj.age || authors.dataValues.age
+      article.findById(id_user).then(articles => {
+        article.update({
+          title: obj.title || articles.dataValues.title,
+          body: obj.body || articles.dataValues.body,
+          id_author: obj.id_author || articles.dataValues.id_author,
+          id_tag: obj.id_tag || articles.dataValues.id_tag
         },{
           where: {
             id: id_user
           }
-        }).then(authors => {
-          author.findById(id_user).then(authors =>{
-            console.log(authors.dataValues);
+        }).then(articles => {
+          article.findById(id_user).then(articles =>{
+            console.log(articles.dataValues);
             process.exit()
 
           })
@@ -70,11 +68,11 @@ class Author {
 
     else if (command === 'erase') {
       let id_user = +user[0]
-      author.destroy({
+      article.destroy({
         where: {
           id: id_user
         }
-      }).then(authors => {
+      }).then(articles => {
         console.log('data berhasil dihapus');
         process.exit()
       })
@@ -82,4 +80,4 @@ class Author {
   }
 }
 
-module.exports = Author
+module.exports = Article

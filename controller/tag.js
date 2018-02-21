@@ -12,11 +12,7 @@ class Tag {
     else if (command === 'add') {
       for (var i = 0; i < user.length; i++) {
         var obj = {
-          first_name: user[0],
-          last_name: user[1],
-          religion: user[2],
-          gender: user[3],
-          age: user[4]
+          name: user[0]
          }
       }
       console.log(obj);

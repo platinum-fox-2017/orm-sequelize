@@ -1,5 +1,6 @@
 const Author = require('./controller/author')
 const Tag = require('./controller/tag')
+const Article = require('./controller/article')
 
 
 let argv = process.argv
