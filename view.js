@@ -26,15 +26,15 @@ class View {
     }
 
     static author(data){
-        Author.print_data(data);
+        Author.print_table(data);
     }
 
     static article(data){
-        Article.print_data(data);
+        Article.print_table(data);
     }
 
     static tag(data){
-        Tag.print_data(data);
+        Tag.print_table(data);
     }
 }
 
