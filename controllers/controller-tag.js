@@ -33,14 +33,14 @@ class ControllerTag {
 
     static read_one(id) {
         tags.findById(id).then(data => {
-            console.log(data.dataValues)
+            ViewTag.showOneTags(data)
             process.exit()
         })
     }
 
     static read_all() {
         tags.findAll({ raw: true }).then(tags => {//raw:true = menampilkan hasil read database dalam bentuk raw (lebih rapi)
-            console.log(tags);
+            ViewTag.showTags(tags)
             process.exit()//menghentikan proses read database.
         })
     }

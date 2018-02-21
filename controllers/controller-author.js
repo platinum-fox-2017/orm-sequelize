@@ -37,14 +37,14 @@ class ControllerAuthor{
 
     static read_one(id){
         authors.findById(id).then(data => {
-            console.log(data.dataValues)
+            ViewAuthor.showOneAuthors(data)
             process.exit()
         })
     }
     
     static read_all(){
         authors.findAll({raw:true}).then(authors => {//raw:true = menampilkan hasil read database dalam bentuk raw (lebih rapi)
-            console.log(authors);
+            ViewAuthor.showAuthors(authors)
             process.exit()//menghentikan proses read database.
         })
     }

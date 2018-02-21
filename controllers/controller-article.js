@@ -36,14 +36,14 @@ class ControllerArticle {
 
     static read_one(id) {
         articles.findById(id).then(data => {
-            console.log(data.dataValues)
+            ViewArticle.showOneArticles(data)
             process.exit()
         })
     }
 
     static read_all() {
         articles.findAll({ raw: true }).then(articles => {//raw:true = menampilkan hasil read database dalam bentuk raw (lebih rapi)
-            console.log(articles);
+            ViewArticle.showArticles(articles)
             process.exit()//menghentikan proses read database.
         })
     }
