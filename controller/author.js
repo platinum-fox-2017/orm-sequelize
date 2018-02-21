@@ -1,12 +1,17 @@
 // const sequelize = require('./sequelize')
 const {author,tag, article} = require('../models')
+const View = require('../view/author')
+
 class Author {
   static doSomething(command, user) {
     if (command === 'read_all') {
       author.findAll().then(authors => {
+        let arr = []
         authors.forEach(data => {
-          console.log(data.dataValues);
+          arr.push(data.dataValues)
+          // console.log(data.dataValues);
         })
+        View.readData(arr)
         process.exit()
       })
     }
@@ -20,19 +25,21 @@ class Author {
           age: user[4]
          }
       }
-      console.log(obj);
-      author.create(obj).then(function () {
-        console.log('data masuk');
-        process.exit()
+      // console.log(obj);
+      author.create(obj).then(function (authors) {
+        // console.log(authors.dataValues);
+        View.addData(authors.dataValues)
+        // console.log('data masuk');
+        // process.exit()
       })
     }
 
     else if (command === 'read_one') {
       let num = user.join('')
-      console.log(num)
       author.findById(num).then(authors => {
-        console.log(authors.dataValues);
-        process.exit()
+        View.read1Data(authors.dataValues)
+        // console.log(authors.dataValues);
+        // process.exit()
       })
     }
 
@@ -59,8 +66,9 @@ class Author {
           }
         }).then(authors => {
           author.findById(id_user).then(authors =>{
-            console.log(authors.dataValues);
-            process.exit()
+            View.updateData(authors.dataValues)
+            // console.log(authors.dataValues);
+            // process.exit()
 
           })
 
@@ -75,8 +83,9 @@ class Author {
           id: id_user
         }
       }).then(authors => {
-        console.log('data berhasil dihapus');
-        process.exit()
+        // View.eraseData(authors.dataValues)
+        // console.log('data berhasil dihapus');
+        // process.exit()
       })
     }
   }

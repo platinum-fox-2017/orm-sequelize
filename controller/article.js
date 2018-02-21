@@ -1,11 +1,14 @@
 // const sequelize = require('./sequelize')
 const {author, tag, article} = require('../models')
+const View = require('../view/article')
+
 class Article {
   static doSomething(command, user) {
     if (command === 'read_all') {
       article.findAll().then(articles => {
         articles.forEach(data => {
-          console.log(data.dataValues);
+          View.readData(data.dataValues)
+          // console.log(data.dataValues);
         })
         process.exit()
       })
@@ -19,19 +22,21 @@ class Article {
           id_tag: user[3]
          }
       }
-      console.log(obj);
-      article.create(obj).then(function () {
-        console.log('data masuk');
-        process.exit()
+      // console.log(obj);
+      article.create(obj).then(function (articles) {
+        View.addData(articles.dataValues)
+        // console.log('data masuk');
+        // process.exit()
       })
     }
 
     else if (command === 'read_one') {
       let num = user.join('')
-      console.log(num)
+      // console.log(num)
       article.findById(num).then(articles => {
-        console.log(articles.dataValues);
-        process.exit()
+        View.read1Data(articles.dataValues)
+        // console.log(articles.dataValues);
+        // process.exit()
       })
     }
 
@@ -57,8 +62,9 @@ class Article {
           }
         }).then(articles => {
           article.findById(id_user).then(articles =>{
-            console.log(articles.dataValues);
-            process.exit()
+            View.updateData(articles.dataValues)
+            // console.log(articles.dataValues);
+            // process.exit()
 
           })
 
@@ -73,8 +79,9 @@ class Article {
           id: id_user
         }
       }).then(articles => {
-        console.log('data berhasil dihapus');
-        process.exit()
+        View.eraseData(articles.dataValues)
+        // console.log('data berhasil dihapus');
+        // process.exit()
       })
     }
   }
