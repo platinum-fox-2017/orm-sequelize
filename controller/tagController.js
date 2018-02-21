@@ -6,18 +6,18 @@ class TagController {
     models.tag.create({name:input3[0]})
     .then((dataTag) => {
       models.tag.findAll({raw:true}).then((dataTag) => {
-        Views.view(dataTag[dataTag.length-1]);
+        Views.viewTag(dataTag[dataTag.length-1]);
       });
     })
   }
   static readOne(input3){
     models.tag.findAll({raw:true}).then((dataTag) => {
-      Views.view(dataTag[input3-1]);
+      Views.viewTag(dataTag[input3-1]);
     });
   }
   static readAll(){
     models.tag.findAll({raw:true}).then((dataTag) => {
-      Views.view(dataTag);
+      Views.viewTag(dataTag);
     });
   }
   static update(input3){

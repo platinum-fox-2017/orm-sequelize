@@ -6,18 +6,18 @@ class ArticleController {
     models.article.create({title:input3[0],body:input3[1],id_author:input3[2],id_tag:input3[3]})
     .then((dataArticle) => {
       models.article.findAll({raw:true}).then((dataArticle) => {
-        Views.view(dataArticle[dataArticle.length-1]);
+        Views.viewArticle(dataArticle[dataArticle.length-1]);
       });
     })
   }
   static readOne(input3){
     models.article.findAll({raw:true}).then((dataArticle) => {
-      Views.view(dataArticle[input3-1]);
+      Views.viewArticle(dataArticle[input3-1]);
     });
   }
   static readAll(){
     models.article.findAll({raw:true}).then((dataArticle) => {
-      Views.view(dataArticle);
+      Views.viewArticle(dataArticle);
     });
   }
   static update(input3){

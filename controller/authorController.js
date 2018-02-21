@@ -6,18 +6,18 @@ class AuthorController {
     models.author.create({first_name:input3[0],last_name:input3[1],religion:input3[2],gender:input3[3],age:input3[4]})
     .then((dataAuthor) => {
       models.author.findAll({raw:true}).then((dataAuthor) => {
-        Views.view(dataAuthor[dataAuthor.length-1]);
+        Views.viewAuthor(dataAuthor[dataAuthor.length-1]);
       });
     })
   }
   static readOne(input3){
     models.author.findAll({raw:true}).then((dataAuthor) => {
-      Views.view(dataAuthor[input3-1]);
+      Views.viewAuthor(dataAuthor[input3-1]);
     });
   }
   static readAll(){
     models.author.findAll({raw:true}).then((dataAuthor) => {
-      Views.view(dataAuthor);
+      Views.viewAuthor(dataAuthor);
     });
   }
   static update(input3){
