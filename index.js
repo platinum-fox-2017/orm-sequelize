@@ -1,0 +1,2 @@
+const sequelize = new sequelize()
+
