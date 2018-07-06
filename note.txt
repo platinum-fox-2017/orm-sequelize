@@ -1,0 +1,6 @@
+node_modules/.bin/sequelize init
+
+node_modules/.bin/sequelize model:generate --name Articles --attributes title:string,body:string,id_author:integer,id_tag:integer
+node_modules/.bin/sequelize model:generate --name Authors --attributes first_name:string,last_name:string,religion:string,gender:string,age:integer 
+node_modules/.bin/sequelize model:generate --name Tags --attributes name:string
+
